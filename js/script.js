@@ -5,6 +5,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalTitulo = document.getElementById('modal-titulo');
     const modalDetalles = document.getElementById('modal-detalles');
     const modalBotonWhatsapp = document.getElementById('modal-boton-whatsapp');
+    //animacion de animate.css
+    const elementosAnimados = document.querySelectorAll('.texto-animado'); // Selecciona todos los elementos con la clase 'mi-elemento'
+    const animationClass = 'animate__slideInRight'; // la animación de Animate.css 
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate__animated', animationClass);
+                observer.unobserve(entry.target); // Deja de observar el elemento una vez que se ha animado
+            }
+        });
+    });
+
+    elementosAnimados.forEach(elemento => {
+        observer.observe(elemento);
+    });
+    
 
     // Selector específico para los botones "Ver más" de las ofertas destacadas
     const botonesVerMasOfertas = document.querySelectorAll('.ofertas-destacadas .producto a');
