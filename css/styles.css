@@ -6,6 +6,11 @@ body {
     background-color: #f4f4f4;
     color: #333;
 }
+.audiowide-regular {
+  font-family: "Audiowide", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 header {
     background-color: #4d947f;
