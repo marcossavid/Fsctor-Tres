@@ -284,6 +284,7 @@ main {
     border: 1px solid #ddd;
     padding: 15px;
     text-align: center;
+    border-radius: 5px;
 }
 
 .producto img {
@@ -297,7 +298,7 @@ main {
 
 .producto .precio {
     font-weight: bold;
-    color: green;
+    color: rgb(27, 27, 27);
 }
 
 .producto a {
@@ -314,27 +315,158 @@ main {
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
+/* Estilos Generales para el Banner (Escritorio y Base) */
 .banner-dinamico {
     background-color: #4d947f;
     color: #f4f4f4;
-    padding: 10px 20px;
+    padding: 10px 200px;
     text-align: center;
     margin-bottom: 40px;
     margin-top: 40px;
-    overflow: hidden; /* Para el efecto carrusel */
+    overflow: hidden;
+    height: 200px; /* Altura fija para escritorio */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-inner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+    max-width: 1000px; /* Ajusta este valor si necesitas más o menos "padding" visual */
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .carousel-container {
-    /* Estilos para el carrusel */
+    
+    padding: 15px 25px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el texto */
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0; /* Necesario para que el texto largo no desborde */
+
+    /* ¡Ajustes clave para evitar el movimiento en escritorio! */
+    /* Aseguramos una altura mínima y si quieres una máxima también */
+    min-height: 50px; /* Ajusta esto basado en la altura que necesite tu texto más corto */
+    /* max-height: 80px; /* Opcional: si quieres limitar la altura para el texto más largo */
 }
 
 .carousel-text {
-    display: none; /* Inicialmente ocultos */
+    display: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    white-space: nowrap; /* Mantiene el texto en una sola línea en escritorio */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
+    overflow: hidden; /* Oculta el texto que se desborde si 'white-space: nowrap' */
+    width: 100%; /* Asegura que el texto ocupe el ancho disponible y active ellipsis */
 }
 
 .carousel-text.active {
     display: block;
 }
+
+.img-container {
+    flex-shrink: 0;
+    flex-grow: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-container img {
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+
+@media (max-width: 950px) {
+    .banner-dinamico {
+        height: auto;
+        padding: 15px 100px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .banner-inner-content {
+        flex-direction: column;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .carousel-container {
+        padding: 10px 15px;
+        margin-bottom: 10px;
+        width: 100%; /* Ocupa todo el ancho */
+
+        /* ¡Ajustes clave para evitar el movimiento en móvil! */
+        /* Definimos una altura fija o un rango de altura */
+        min-height: 70px; /* Establece una altura mínima que acomode el texto más largo en móviles */
+        max-height: 100px; /* Si necesitas limitar aún más la altura, ajústalo */
+        /* Si quieres una altura fija exacta, puedes usar: height: 70px; */
+
+        /* Aseguramos que el contenido se centre verticalmente si la altura es fija */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-text {
+        font-size: 1em;
+        white-space: normal; /* Permite que el texto se ajuste a varias líneas */
+        word-break: break-word; /* Rompe palabras largas */
+        /* Eliminamos 'width: 100%; overflow: hidden; text-overflow: ellipsis;' de aquí,
+           ya que queremos que el texto fluya normalmente en móviles */
+        text-align: center; /* Centra el texto multilínea */
+    }
+
+    .img-container {
+        height: auto;
+        max-width: 80%;
+        margin-top: 10px;
+    }
+
+    .img-container img {
+        max-height: 120px;
+        width: auto;
+    }
+}
+
+/* Opcional: Para pantallas aún más pequeñas */
+@media (max-width: 480px) {
+    .banner-dinamico {
+        height: auto;
+        padding: 15px 20px;
+    }
+    .banner-inner-content {
+        padding: 0 5px;
+    }
+
+    .carousel-text {
+        font-size: 0.9em;
+    }
+
+    .img-container {
+        max-width: 90%;
+    }
+
+    .img-container img {
+        max-height: 100px;
+    }
+}
+
+
 
 .quienes-somos-grid-container {
     display: grid; /* Activa CSS Grid para el contenedor */
