@@ -298,8 +298,10 @@ main {
 
 .productos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Ajustamos minmax para que en móvil tenga al menos 150px de ancho y se adapte */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reducimos minmax para móviles */
     gap: 20px;
+    padding: 0 10px; /* Añadimos un pequeño padding horizontal al grid para que no se pegue a los bordes */
 }
 
 .producto {
@@ -308,20 +310,42 @@ main {
     padding: 15px;
     text-align: center;
     border-radius: 5px;
+    /* Aseguramos que el producto mismo sea un contenedor flex para centrar su contenido si es necesario */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos del producto */
+    align-items: center; /* Centra el contenido horizontalmente dentro del producto */
 }
 
 .producto img {
     max-width: 100%;
     height: 200px; /* Alto fijo deseado */
-    object-fit: cover; /* Recorta la imagen para llenar el contenedor manteniendo la proporción */
-    /* object-fit: contain; /* Escala la imagen para que quepa completamente dentro, puede haber espacios vacíos */
-    /* object-fit: fill; /* Estira la imagen para llenar el contenedor, puede deformarse */
+    /* ¡CAMBIO CLAVE AQUÍ! */
+    object-fit: contain; /* Escala la imagen para que quepa completamente dentro del contenedor, sin recortarse. Puede dejar espacios vacíos (letras blancas) */
+    /* Puedes probar también con 'object-fit: scale-down;' que se comporta similar a 'contain' pero solo si la imagen es más grande que el contenedor */
     margin-bottom: 10px;
+    /* Aseguramos que la imagen use el ancho disponible */
+    width: 100%;
 }
 
 .producto .precio {
     font-weight: bold;
     color: rgb(27, 27, 27);
+    margin-top: auto; /* Empuja el precio hacia abajo si el nombre es corto */
+}
+
+.producto h4 { /* Añadido para dar estilos al h4 del nombre del producto */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.1em; /* Ajusta el tamaño de la fuente si es necesario */
+    text-align: center;
+    word-break: break-word; /* Para nombres largos */
+}
+
+.producto p { /* Añadido para el precio anterior */
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 10px;
 }
 
 .producto a {
@@ -337,6 +361,50 @@ main {
     background-color: #0f6d62;
 }
 
+/* Responsive para móvil */
+@media (max-width: 768px) {
+    .productos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Quizás un poco más pequeño para 2 columnas en móviles */
+        gap: 15px; /* Reducir el espacio entre productos en móviles */
+        padding: 0 5px; /* Reducir aún más el padding del grid */
+    }
+
+    .producto {
+        padding: 10px;
+    }
+
+    .producto img {
+        height: 150px; /* Reducir la altura de la imagen en móvil */
+    }
+
+    .producto h4 {
+        font-size: 1em;
+    }
+
+    .producto .precio {
+        font-size: 1.1em;
+    }
+
+    .producto p {
+        font-size: 0.8em;
+    }
+
+    .producto a {
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .productos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Incluso más pequeño para pantallas muy pequeñas */
+        gap: 10px;
+    }
+
+    .producto img {
+        height: 120px; /* Altura aún menor para imágenes en pantallas muy pequeñas */
+    }
+}
 /*---------------------------------------------------------------------------------------------------------*/
 /* Estilos Generales para el Banner (Escritorio y Base) */
 .banner-dinamico {
