@@ -205,7 +205,7 @@ main {
         padding: 30px 10px; /* Más espacio en los bordes para móviles muy pequeños */
     }
     .banner-principal .carousel-inner .carousel-item .banner-content h2 {
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
     .banner-principal .carousel-inner .carousel-item .banner-content p {
         font-size: 0.8em;
