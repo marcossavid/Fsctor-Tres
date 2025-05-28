@@ -13,7 +13,7 @@ body {
 }
 
 header {
-    background-color: #4d947f;
+    background: linear-gradient(to right, #00A9D4, #9a0067);
     color: white;
     padding: 1em 0;
     text-align: center;
@@ -360,7 +360,7 @@ main {
 
 .producto a {
     display: inline-block;
-    background-color: #0a4942;
+    background-color: #471049;
     color: white;
     padding: 8px 15px;
     text-decoration: none;
@@ -371,7 +371,7 @@ main {
 }
 
 .producto a:hover {
-    background-color: #0f6d62;
+    background-color: #ad25fc;
 }
 
 /* Responsive para móvil */
@@ -426,7 +426,8 @@ main {
 /*---------------------------------------------------------------------------------------------------------*/
 /* Estilos Generales para el Banner (Escritorio y Base) */
 .banner-dinamico {
-    background-color: #4d947f;
+    
+    background-image: url('../assets/56.jpg');
     color: #f4f4f4;
     padding: 10px 200px;
     text-align: center;
@@ -471,7 +472,7 @@ main {
 
 .carousel-text {
     display: none;
-    font-size: 1.2em;
+    font-size: 1.5rem;
     font-weight: bold;
     white-space: nowrap; /* Mantiene el texto en una sola línea en escritorio */
     text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
@@ -501,7 +502,7 @@ main {
 }
 
 
-@media (max-width: 950px) {
+@media (max-width: 1070px) {
     .banner-dinamico {
         height: auto;
         padding: 15px 100px;
@@ -653,7 +654,7 @@ main {
 }
 
 footer {
-    background-color: #4d947f;
+    background-color: #007491;
     color: white;
     text-align: center;
     padding: 1em 0;

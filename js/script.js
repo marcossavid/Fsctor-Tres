@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     botonesVerMasOfertas.forEach(boton => {
         boton.addEventListener('click', function(event) {
-            event.preventDefault(); // <--- ¡Asegúrate de que esta línea esté aquí!
+            event.preventDefault(); 
             const productoId = obtenerIdProducto(this);
             if (productoId) {
                 mostrarDetallesProducto(productoId);
