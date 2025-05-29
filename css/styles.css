@@ -3,7 +3,7 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(to right, #dbedf1, #eed7e7);
     color: #333;
 }
 .audiowide-regular {
@@ -291,7 +291,7 @@ main {
 .marcas h2,
 .preguntas-frecuentes h2,
 .pagina-categoria h2 {
-    border-bottom: 2px solid #ccc;
+    border-bottom: 0.7px solid #8a8a8a;
     padding-bottom: 10px;
     margin-bottom: 40px;
 }
@@ -305,8 +305,14 @@ main {
 }
 
 .producto {
-    background-color: white;
-    border: 1px solid #ddd;
+    
+    background: rgba(247, 247, 247, 0.452);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(248, 248, 248, 0.979);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  
+    
     padding: 15px;
     text-align: center;
     border-radius: 5px;
@@ -368,10 +374,12 @@ main {
     margin-top: 10px;
     /* Asegúrate de que el botón no se estire horizontalmente */
     align-self: center; /* Centra el botón si es un elemento flex */
+     box-shadow: 0 4px 30px rgba(102, 0, 94, 0.438);
 }
 
 .producto a:hover {
     background-color: #ad25fc;
+   
 }
 
 /* Responsive para móvil */
@@ -583,10 +591,15 @@ main {
     grid-template-columns: 1fr 500px; /* Define dos columnas: una flexible para el texto y una de ancho fijo para la imagen */
     gap: 40px; /* Espacio entre el texto y la imagen */
     align-items: center; /* Alinea verticalmente los elementos al centro */
-    background-color: #ffffff;
+   
     padding: 40px; /* Opcional: añade un poco de espacio alrededor del contenido */
-    border: 1px solid #ddd; /* Opcional: un borde sutil para el contenedor */
+    
     border-radius: 5px; /* Opcional: bordes redondeados */
+      background: rgba(247, 247, 247, 0.452);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(248, 248, 248, 0.979);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -649,8 +662,11 @@ main {
 .pregunta {
     margin-bottom: 15px;
     padding: 10px;
-    border: 1px solid #eee;
-    background-color: #fff;
+      background: rgba(247, 247, 247, 0.452);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(248, 248, 248, 0.979);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 footer {
