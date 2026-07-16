@@ -1,0 +1,219 @@
+[
+  {
+    "id": "1",
+    "nombre": "Notebook Pro 14\"",
+    "imagen": "💻",
+    "precio": 149999.00,
+    "categoria": "laptops"
+  },
+  {
+    "id": "2",
+    "nombre": "Teléfono Móvil X",
+    "imagen": "📱",
+    "precio": 84499.00,
+    "categoria": "smartphones"
+  },
+  {
+    "id": "3",
+    "nombre": "Monitor UltraWide",
+    "imagen": "🖥️",
+    "precio": 45999.00,
+    "categoria": "monitores"
+  },
+  {
+    "id": "4",
+    "nombre": "Teclado Mecánico RGB",
+    "imagen": "⌨️",
+    "precio": 6999.00,
+    "categoria": "accesorios"
+  },
+  {
+    "id": "5",
+    "nombre": "Mouse Inalámbrico",
+    "imagen": "🖱️",
+    "precio": 2999.00,
+    "categoria": "accesorios"
+  },
+  {
+    "id": "6",
+    "nombre": "Impresora Multifunción",
+    "imagen": "🖨️",
+    "precio": 13999.00,
+    "categoria": "oficina"
+  },
+  {
+    "id": "7",
+    "nombre": "Cámara Fotográfica",
+    "imagen": "📷",
+    "precio": 54999.00,
+    "categoria": "fotografía"
+  },
+  {
+    "id": "8",
+    "nombre": "Cámara de Video",
+    "imagen": "🎥",
+    "precio": 39999.00,
+    "categoria": "fotografía"
+  },
+  {
+    "id": "9",
+    "nombre": "Auriculares Gaming",
+    "imagen": "🎧",
+    "precio": 8999.00,
+    "categoria": "audio"
+  },
+  {
+    "id": "10",
+    "nombre": "Micrófono USB",
+    "imagen": "🎙️",
+    "precio": 5999.00,
+    "categoria": "audio"
+  },
+  {
+    "id": "11",
+    "nombre": "Altavoz Bluetooth",
+    "imagen": "🔊",
+    "precio": 4999.00,
+    "categoria": "audio"
+  },
+  {
+    "id": "12",
+    "nombre": "Console Pro (Joystick)",
+    "imagen": "🕹️",
+    "precio": 29999.00,
+    "categoria": "gaming"
+  },
+  {
+    "id": "13",
+    "nombre": "Smartwatch Serie 7",
+    "imagen": "⌚",
+    "precio": 19999.00,
+    "categoria": "wearables"
+  },
+  {
+    "id": "14",
+    "nombre": "Robot Aspirador",
+    "imagen": "🤖",
+    "precio": 15999.00,
+    "categoria": "smart-home"
+  },
+  {
+    "id": "15",
+    "nombre": "Disco Duro Externo 2TB",
+    "imagen": "💾",
+    "precio": 6999.00,
+    "categoria": "almacenamiento"
+  },
+  {
+    "id": "16",
+    "nombre": "Óptico Blu-ray",
+    "imagen": "💿",
+    "precio": 2499.00,
+    "categoria": "almacenamiento"
+  },
+  {
+    "id": "17",
+    "nombre": "Batería Portátil 20000mAh",
+    "imagen": "🔋",
+    "precio": 3399.00,
+    "categoria": "accesorios"
+  },
+  {
+    "id": "18",
+    "nombre": "Enchufe Inteligente",
+    "imagen": "🔌",
+    "precio": 1999.00,
+    "categoria": "smart-home"
+  },
+  {
+    "id": "19",
+    "nombre": "Router Wi-Fi 6",
+    "imagen": "📡",
+    "precio": 8999.00,
+    "categoria": "redes"
+  },
+  {
+    "id": "20",
+    "nombre": "Satélite Mini",
+    "imagen": "🛰️",
+    "precio": 129999.00,
+    "categoria": "componentes"
+  },
+  {
+    "id": "21",
+    "nombre": "Calculadora Científica",
+    "imagen": "🔢",
+    "precio": 1199.00,
+    "categoria": "accesorios"
+  },
+  {
+    "id": "22",
+    "nombre": "Cámara Instantánea",
+    "imagen": "📸",
+    "precio": 7499.00,
+    "categoria": "fotografía"
+  },
+  {
+    "id": "23",
+    "nombre": "Dron con Cámara wi-fi",
+    "imagen": "🚁",
+    "precio": 52999.00,
+    "categoria": "fotografía"
+  },
+  {
+    "id": "24",
+    "nombre": "Gafas de Realidad Virtual",
+    "imagen": "🕶️",
+    "precio": 44999.00,
+    "categoria": "gaming"
+  },
+  {
+    "id": "25",
+    "nombre": "Placa de Video",
+    "imagen": "🔧",
+    "precio": 89999.00,
+    "categoria": "componentes"
+  },
+  {
+    "id": "26",
+    "nombre": "SmartTV vintage",
+    "imagen": "📺",
+    "precio": 59999.00,
+    "categoria": "televisión"
+  },
+  {
+    "id": "27",
+    "nombre": "TV Wide",
+    "imagen": "🖥️",
+    "precio": 29999.00,
+    "categoria": "televisión"
+  },
+  {
+    "id": "28",
+    "nombre": "Cargador fast-recover",
+    "imagen": "🪫",
+    "precio": 9985.00,
+    "categoria": "accesorios"
+  },
+  {
+    "id": "29",
+    "nombre": "Macbook Air 13\"",
+    "imagen": "💻",
+    "precio": 159999.00,
+    "categoria": "laptops"
+  },
+  {
+    "id": "30",
+    "nombre": "Family Game (vintage)",
+    "imagen": "👾",
+    "precio": 19550.00,
+    "categoria": "gaming"
+  },
+  {
+    "id": "31",
+    "nombre": "Termómetro digital wifi",
+    "imagen": "🌡️",
+    "precio": 4550.00,
+    "categoria": "accesorios"
+  }
+]

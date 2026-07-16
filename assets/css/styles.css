@@ -1,0 +1,543 @@
+/* Base theme variables — minimalista y atractivo */
+:root {
+	--header-height: 72px;
+	--accent: #06b6d4; /* acento principal (teal/cyan) */
+	--accent-dark: #008ba4; /* acento principal (teal/cyan) */
+	--primary: #0b2545; /* color profundo para acentos oscuros */
+	--bg: #f7fbfc; /* fondo general (claro) */
+	--surface: #ffffff; /* superficies como header, cards */
+	--text: #0f1724; /* texto principal */
+	--subtext: #51606a; /* texto secundario */
+    --text: black;
+	--muted: #9aa6b2;
+	--shadow: 0 6px 18px rgba(2,6,23,0.08);
+}
+
+/* Dark theme: aplicar añadiendo el atributo `data-theme="dark"` al <html> o <body>,
+	 o usando la clase `.theme-dark` si lo prefieres. Ej: <html data-theme="dark"> */
+/* [color-scheme="dark"] {
+	--bg: #071028;
+	--surface: #071829;
+	--text: #e6f0f6;
+	--subtext: #9fb3c6;
+	--accent: #2bd4c8;
+	--shadow: 0 6px 18px rgba(0,0,0,0.6);
+} */
+
+/* Base layout */
+* { 
+    box-sizing: border-box; 
+}
+
+html,body { 
+    height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: sans-serif;
+	background: var(--bg);
+	color: var(--text);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+/* Fixed header */
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 120px;
+	/* height: var(--header-height); */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 1.25rem;
+	background: var(--surface);
+	border-bottom: 1px solid rgba(16,24,40,0.04);
+	box-shadow: var(--shadow);
+	z-index: 1000;
+	/* para poner título a la derecha y el icono a la izquierda */
+	/* flex-direction: row-reverse; */
+}
+
+/* Dejar espacio al contenido para que no quede debajo del header */
+main { padding-top: calc(var(--header-height) + 12px); }
+
+/* Navegación del header (título y subtítulo alineados a la derecha) */
+.navigation-header {
+	display: flex;
+	text-align: left;
+    padding: 20px;
+	flex-direction: column;
+	gap: 20px;
+}
+.navigation-header h1 {
+	margin: 0;
+    margin-top: 20px;
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--primary);
+	letter-spacing: -0.2px;
+}
+.navigation-header p {
+	margin: 0;
+    margin-bottom: 20px;
+	font-size: 1.25rem;
+	color: var(--subtext);
+}
+
+/* Checkout icon styled like a button on the left */
+.checkout-header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+    user-select: none;
+}
+
+.checkout-header:active {
+    filter: invert(50);
+}
+
+.checkout-header .material-symbols-outlined.search-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	height: 80px;
+	background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 70%, black 10%));
+	color: var(--surface);
+	border-radius: 12px;
+	box-shadow: 0 6px 18px rgba(3,102,118,0.14);
+	cursor: pointer;
+	transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+	font-size: 3.4rem;
+}
+.checkout-header .material-symbols-outlined.search-icon:hover,
+.checkout-header .material-symbols-outlined.search-icon:focus {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 24px rgba(3,102,118,0.18);
+}
+
+/* Accessibility: focus ring */
+.checkout-header .material-symbols-outlined.search-icon:focus {
+	outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent);
+	outline-offset: 3px;
+}
+
+/* Search bar styles */
+.search-bar {
+	display: flex;
+	justify-content: center; /* centrado horizontal */
+	align-items: center;
+	width: 100%;
+	padding: 0rem 1rem 0.75rem 1rem;
+    padding-bottom: 3rem;
+	margin-top: -25px;
+}
+
+.search-bar search {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	background: color-mix(in srgb, var(--surface) 88%, var(--bg));
+	padding: 6px 8px;
+	border-radius: 999px;
+	box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+	transition: box-shadow 160ms ease, transform 120ms ease;
+}
+
+.search-bar search:focus-within {
+	box-shadow: 0 10px 30px rgba(2,6,23,0.09);
+	transform: translateY(-1px);
+}
+
+#inputSearch {
+	width: 100%;
+	max-width: 500px;
+    width: 500px;
+	background: transparent;
+	border: none;
+	padding: 8px 12px;
+	font-size: 1.2rem;
+	color: var(--text);
+	outline: none;
+}
+
+#inputSearch::placeholder { color: var(--muted); }
+
+/* Products grid and cards */
+
+.container-categories {
+	user-select: none;
+	cursor: pointer;
+	display: flex;
+	flex-wrap: wrap; /* continuar en la siguiente línea cuando no haya espacio */
+	justify-content: center; /* centrar las cards dentro del contenedor */
+	align-items: flex-start;
+	gap: 1.2rem;
+	width: 80%; /* ocupar ancho máximo disponible */
+	padding: .1rem;
+	margin: 0 auto;
+	margin-bottom: 60px;
+	min-height: auto;
+}
+
+.category-tag {
+	color: var(--surface);
+	font-weight: 700;
+	background-color: var(--accent-dark);
+	padding: 5px 20px;
+	font-size: 1.2rem;
+	border-radius: 8px;
+	text-transform: uppercase;
+	gap: 20px;
+}
+
+.category-tag:hover {
+	background-color: var(--accent);
+	transform: scale(1.05);
+}
+
+.category-tag:active {
+	transform: scale(.98);
+}
+
+.products-container {
+	display: flex;
+	flex-wrap: wrap; /* continuar en la siguiente línea cuando no haya espacio */
+	justify-content: center; /* centrar las cards dentro del contenedor */
+	align-items: flex-start;
+	gap: 1.25rem;
+	width: 100%; /* ocupar ancho máximo disponible */
+    min-height: 660px;
+	padding: 1.25rem;
+	margin: 0 auto;
+	margin-bottom: 80px;
+}
+
+.card {
+    cursor: pointer;
+	background: var(--surface);
+	color: var(--text);
+	border-radius: 12px;
+	min-width: 280px; /* ancho mínimo razonable */
+	max-width: 280px; /* no crecer demasiado */
+	flex: 1 1 260px; /* flexible: crecer, encoger, base 260px */
+	display: flex;
+	flex-direction: column; /* contenido vertical */
+	align-items: center;
+	text-align: center;
+	padding: 1rem;
+	box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+	transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.error {
+	min-width: 500px; /* ancho mínimo razonable */
+	max-width: 500px; /* no crecer demasiado */
+	background-color: darkred;
+	padding: 40px;
+	box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+}
+
+.error .card-error-title {
+	color: white;
+	font-size: x-large;
+}
+
+.error .card-error-detail {
+	line-height: 2rem;
+	font-size: 1.2rem;
+	color: white !important;
+}
+
+.card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 18px 40px rgba(2,6,23,0.09);
+}
+
+.card-icon-image {
+	font-size: 6rem;
+	line-height: 1;
+	margin-top: 2rem;
+	margin-bottom: 2.5rem;
+}
+
+.card-product-title {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--primary);
+	margin-bottom: 2.5rem;
+}
+
+.card-product-price {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--accent);
+	margin-bottom: 1rem;
+}
+
+.card-button-buy {
+	appearance: none;
+	border: none;
+	background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 70%, black 10%));
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	color: var(--surface);
+	padding: 0.6rem 1rem;
+	border-radius: 10px;
+	cursor: pointer;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+	font-weight: 700;
+    height: 50px;
+    width: 100%;
+	transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
+}
+
+.card-button-buy:hover { transform: translateY(-2px); opacity: 0.98; }
+
+.card-button-buy:active { transform: scale(0.98); }
+
+/* Footer */
+footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 1.25rem 1rem;
+	background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 70%, black 10%));
+	color: var(--surface);
+	box-shadow: 0 -4px 18px rgba(2,6,23,0.06);
+}
+
+footer .footer-inner {
+	max-width: 1100px;
+    height: 80px;
+	width: 100%;
+	text-align: center;
+	font-size: 0.95rem;
+	line-height: 1.4;
+}
+
+footer a { color: var(--surface); text-decoration: underline; }
+
+/* Checkout / Cart table styles */
+.checkout-container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 1.5rem;
+    margin-top: 60px;
+    min-height: 600px;
+}
+
+.checkout-container h2 {
+	margin-top: 0;
+	margin-bottom: 2.5rem;
+	color: var(--primary);
+}
+
+.back-link {
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	background-color: var(--accent);
+    padding: 0.5rem;
+    padding-right: 1rem;
+    border-radius: 8px;
+	color: white;
+	text-decoration: none;
+	font-weight: 700;
+	margin-top: .5rem;
+	margin-bottom: 2.5rem;
+	width: 120px;
+}
+
+.back-link .material-symbols-outlined { 
+    font-size: 1.5rem; 
+}
+.back-link:hover { 
+    opacity: 0.9; 
+    transform: translateX(-2px); 
+}
+
+.table-wrap { overflow-x: auto; }
+
+.checkout-table {
+	width: 100%;
+	border-collapse: collapse;
+	background: transparent;
+    margin-bottom: 30px;
+}
+
+.checkout-table thead th {
+	text-align: left;
+	padding: 1rem 1rem;
+	font-size: 1.1rem;
+	/* color: var(--subtext); */
+    background: linear-gradient(180deg, 
+                var(--accent), color-mix(in srgb, 
+                var(--accent) 70%, black 10%));
+    color: var(--surface);
+	border-bottom: 1px solid rgba(16,24,40,0.06);
+}
+
+.checkout-table thead th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.checkout-table thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.checkout-table tbody td {
+	padding: 0.9rem 1rem;
+	vertical-align: middle;
+	border-bottom: 1px solid rgba(16,24,40,0.04);
+}
+
+.checkout-table tbody tr:hover {
+	background-color: white;
+}
+
+.checkout-table tbody tr:last-child td { border-bottom: none; }
+
+.checkout-table .product-image { 
+    font-size: 4rem; 
+}
+
+.checkout-table .product-name { 
+    font-weight: 700; 
+    color: var(--text); 
+}
+
+.checkout-table .product-price { 
+    font-weight: 600; 
+    color: var(--text);
+}
+
+.checkout-table .product-delete {
+    color: darkred; 
+}
+
+.checkout-table .product-delete span {
+    cursor: pointer;
+    font-size: 2rem !important;
+    font-weight: 800;
+    margin-left: 20px;
+}
+
+.checkout-table .delete-action {
+	color: #ff4d4f; /* rojo para eliminar */
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	font-size: 1.25rem;
+	padding: 6px 8px;
+	border-radius: 8px;
+}
+
+.checkout-table .delete-action:hover { 
+    background: rgba(255,77,79,0.06); 
+}
+
+.cart-total {
+	margin-top: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	padding: 2rem;
+	border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+	background: linear-gradient(180deg, 
+                var(--accent), color-mix(in srgb, 
+                var(--accent) 70%, black 10%));
+	color: var(--surface);
+    width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cart-total .cart-total-label { 
+    margin: 0; 
+    font-size: 1.5rem; 
+    font-weight: 400; 
+}
+
+.cart-total .cart-total-amount { 
+    margin: 0; 
+    font-size: 1.5rem; 
+    font-weight: 800; 
+}
+
+.buy-it {
+    margin-top: 0rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	padding: 2rem;
+	border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    width: 100%;
+    /* width: 50%;
+	max-width: 640px; */
+	margin-left: auto;
+	margin-right: auto;
+	background: linear-gradient(135deg, 
+                var(--subtext), color-mix(in srgb, 
+                var(--text) 20%, black 80%));
+}
+
+.cart-total button {
+    cursor: pointer;
+    outline: none;
+    height: 60px;
+    width: 220px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, 
+            var(--accent), color-mix(in srgb, 
+            var(--accent-dark), black 10%));
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+}
+
+.cart-total button:active {
+    transform: scale(.98); 
+}
+
+@media (max-width: 520px) {
+	.card { flex: 1 1 100%; max-width: 520px; }
+}
+
+@media (max-width: 420px) {
+	footer { padding: 1rem 0.75rem; }
+	footer .footer-inner { font-size: 0.9rem; }
+}
+
+@media (max-width: 520px) {
+	.checkout-container { padding: 0.8rem; }
+	.checkout-table thead th, .checkout-table tbody td { padding: 0.6rem; }
+	.cart-total { padding: 0.7rem; width: 100%; }
+}
+
+@media (max-width:420px) {
+	.search-bar { padding-left: 0.5rem; padding-right: 0.5rem; }
+	#inputSearch { max-width: 400px; }
+}
+/* Responsive tweaks */
+@media (max-width: 640px) {
+	:root { --header-height: 64px; }
+	.checkout-header .material-symbols-outlined.search-icon { width: 48px; height: 48px; font-size:20px; }
+	.navigation-header h1 { font-size: 1rem; }
+	.navigation-header p { font-size: 0.78rem; }
+	header { padding: 0 0.75rem; }
+}

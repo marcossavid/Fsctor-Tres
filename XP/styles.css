@@ -1,0 +1,896 @@
+/* Estilos generales */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #dbedf1, #eed7e7);
+    color: #333;
+}
+.audiowide-regular {
+  font-family: "Audiowide", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Estilos generales del header */
+header {
+     background: linear-gradient(to right, #bae9f5, #c07da6);
+    padding: 1rem 0;
+    text-align: center; /* Centra el contenido en pantallas grandes */
+}
+/* Si usas la clase .no-background, aplica esto para que el header siga transparente */
+.no-background header {
+    background: none;
+}
+.no-background .container-header {
+    background: none;
+}
+.no-background .nav-menu {
+    background: none;
+}
+.force-white-text {
+  color: #fff !important;
+}
+
+.container-header {
+    max-width: 1200px; /* Ajusta según el ancho de tu contenido principal */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Alinea título a la izquierda, menú a la derecha */
+    align-items: center; /* Centra verticalmente los elementos */
+    flex-wrap: wrap; /* Permite que los elementos se apilen en pantallas pequeñas */
+}
+
+.container-header h1 {
+    color: #471049;
+    font-size: 2rem;
+    margin: 0;
+    padding-left: 15px; /* Espacio para el título */
+}
+
+/* Estilos para el menú de navegación */
+.nav-menu {
+    padding-right: 15px; /* Espacio para el menú */
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Los elementos se muestran en línea por defecto */
+}
+
+.nav-menu ul li {
+    margin-left: 25px; /* Espacio entre los elementos del menú */
+}
+
+.nav-menu ul li a {
+    color: rgb(44, 44, 44) !important;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    text-decoration: underline;
+}
+
+/* --- Estilos para el Menú de Hamburguesa (Mobile) --- */
+
+/* El checkbox se oculta */
+.menu-toggle {
+    display: none;
+}
+
+/* El icono del hamburguesa */
+.hamburger-icon {
+    display: none; /* Oculto por defecto en pantallas grandes */
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    position: relative;
+    margin-right: 15px; /* Espacio a la derecha */
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+}
+
+.hamburger-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #471049; /* Color de las líneas */
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 20px;
+}
+
+/* Estilos del menú cuando está desplegado (checkbox marcado) */
+#menu-toggle:checked ~ .nav-menu {
+    display: block; /* Muestra el menú */
+    position: absolute; /* Para que no ocupe espacio en el flujo */
+    top: 70px; /* Ajusta la posición vertical según el alto de tu header */
+    left: 0;
+    width: 100%;
+    background-color: white; /* Fondo para el menú desplegado */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 999; /* Asegura que esté debajo del hamburguesa, pero sobre el contenido */
+    padding: 20px 0;
+}
+
+#menu-toggle:checked ~ .nav-menu ul {
+    flex-direction: column; /* Los elementos se apilan verticalmente */
+    text-align: center;
+}
+
+#menu-toggle:checked ~ .nav-menu ul li {
+    margin: 15px 0; /* Espacio vertical entre elementos */
+}
+main {
+    padding: 20px;
+}
+
+/* ... (estilos generales) ... */
+
+.banner-principal {
+    margin: 20px auto;   /* margen arriba/abajo y centrado horizontal */
+    max-width: 1200px;   /* o el valor que prefieras */
+    border-radius: 20px; /* bordes redondeados */
+    overflow: hidden;    /* hace que las imágenes respeten los bordes */
+     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.banner-principal .carousel {
+    
+      border-radius: 20px;  /* mismo valor que el contenedor */
+    overflow: hidden;     /* recorta imágenes y gradientes */
+}
+
+.banner-principal .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner-principal .carousel-item {
+    position: relative;
+    display: none;
+    width: 100%;
+    height: 400px;
+    background-size: cover; /* Asegura que la imagen cubra el contenedor */
+    background-position: center; /* Centra la imagen */
+    transition: transform 0.6s ease-in-out;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.banner-principal .carousel-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.247); /* Tu color */
+    z-index: 2; /* Encima de la imagen */
+}
+
+.banner-principal .carousel-item.active {
+    display: block;
+    transform: translateX(0);
+}
+
+.banner-principal .carousel-item-next,
+.banner-principal .carousel-item-prev {
+    position: absolute;
+    top: 0;
+}
+
+.banner-principal .carousel-item-next {
+    transform: translateX(100%);
+}
+
+.banner-principal .carousel-item-prev {
+    transform: translateX(-100%);
+}
+
+.banner-principal .carousel-item-next.carousel-item-left,
+.banner-principal .carousel-item-prev.carousel-item-right {
+    transform: translateX(0);
+}
+
+.banner-principal .carousel-inner .carousel-item .banner-content {
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Encima del ::before */
+}
+
+.banner-principal .carousel-inner .carousel-item .banner-content h2 {
+    margin-top: 0;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    
+}
+
+.banner-principal .carousel-inner .carousel-item .banner-content p {
+    font-size: 1.2em;
+}
+
+/* Estilos para indicadores */
+.carousel-indicators {
+     position: absolute;
+  bottom: 5%; /* los sube dentro del banner */
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 25px;
+    height: 4px;
+    margin: 0 4px;
+    border-radius: 10px;        /* bordes redondeados */
+    border: none;
+    background-color: #fff;
+    opacity: .5;
+    transition: all .3s ease;
+    
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: #fff;
+}
+
+.carousel-item {
+  background-size: cover;
+  background-position: center;
+  height: 400px; /* fijo, luego ajustás con media queries */
+}
+
+.carousel-item img {
+  width: 100%;              /* siempre ocupa el ancho completo */
+  height: 400px;            /* altura en desktop */
+  object-fit: cover;        /* se recorta para no deformarse */
+}
+
+/* Estilos para pantallas más pequeñas (móvil) */
+@media (max-width: 1100px) {
+     .banner-principal {
+        max-width: 95%;       /* ocupa casi todo el ancho */
+        border-radius: 15px;  /* bordes un poco menos redondeados */
+    }
+     .carousel-indicators {
+    bottom: 5%; /* más cerca del texto */
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+     .banner-principal {
+        max-width: 95%;       /* ocupa casi todo el ancho */
+        border-radius: 15px;  /* bordes un poco menos redondeados */
+    }
+    .banner-principal .carousel-item {
+        height: 300px; /* Reducir la altura del banner en móvil para que no sea tan grande */
+    }
+
+    .banner-principal .carousel-inner .carousel-item .banner-content {
+        padding: 40px 15px; /* Reducir el padding vertical y horizontal para móviles */
+        text-align: center;
+        justify-content: center;
+        max-width: 100%; /* Asegurarse de que el contenido use todo el ancho disponible */
+    }
+
+    .banner-principal .carousel-inner .carousel-item .banner-content h2 {
+        font-size: 1.5em; /* Reducir aún más el tamaño del título */
+        margin-bottom: 5px;
+        word-break: break-word; /* Permite que las palabras largas se rompan y eviten el desbordamiento */
+        line-height: 1.3; /* Ajusta el interlineado para mejor lectura en varias líneas */
+    }
+
+    .banner-principal .carousel-inner .carousel-item .banner-content p {
+        font-size: 0.9em; /* Reducir el tamaño del párrafo */
+        word-break: break-word; /* Permite que las palabras largas se rompan */
+        line-height: 1.4; /* Ajusta el interlineado */
+    }
+
+    
+      .carousel-item img {
+    height: 300px;          /* altura más chica */
+  }
+   .carousel-indicators {
+    bottom: 5%; /* más cerca del texto */
+    display: none;
+  }
+  .container-header {
+        justify-content: space-between; /* Mantiene título y hamburguesa separados */
+        flex-wrap: nowrap; /* Evita que se apilen si no es necesario */
+    }
+
+    .container-header h1 {
+        margin-bottom: 0; /* Elimina margen inferior del título si se apila */
+        padding-left: 15px;
+    }
+
+    .nav-menu {
+        display: none; /* Oculta el menú por defecto */
+    }
+
+    .hamburger-icon {
+        display: block; /* Muestra el icono del hamburguesa */
+    }
+
+    #menu-toggle:checked ~ .nav-menu {
+        display: block; /* Muestra el menú cuando el checkbox está marcado */
+        position: absolute;
+        top: 70px; /* Ajusta la posición vertical */
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 999;
+        padding: 20px 0;
+    }
+
+    #menu-toggle:checked ~ .nav-menu ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #menu-toggle:checked ~ .nav-menu ul li {
+        margin: 15px 0;
+    }
+
+    /* Opcional: animaciones para el menú de hamburguesa */
+    #menu-toggle:checked + .hamburger-icon span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    #menu-toggle:checked + .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+    }
+    #menu-toggle:checked + .hamburger-icon span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* Opcional: Para pantallas aún más pequeñas (por ejemplo, teléfonos muy pequeños) */
+@media (max-width: 480px) {
+    .banner-principal {
+        max-width: 95%;       /* un poquito más de margen a los lados */
+        border-radius: 12px;  /* esquinas más suaves */
+        margin: 10px auto;    /* menos espacio arriba/abajo */
+    }
+    .banner-principal .carousel-item {
+        height: 250px; /* Puedes reducir aún más la altura si lo ves necesario */
+    }
+    .banner-principal .carousel-inner .carousel-item .banner-content {
+        padding: 30px 10px; /* Más espacio en los bordes para móviles muy pequeños */
+        
+    }
+    .banner-principal .carousel-inner .carousel-item .banner-content h2 {
+        font-size: 1.1em;
+          margin-right: 20px;
+    }
+    .banner-principal .carousel-inner .carousel-item .banner-content p {
+        font-size: 0.8em;
+        margin-right: 20px;
+    }
+    
+  
+  .carousel-item {
+    height: 250px; /* o lo que te convenga */
+  }
+
+  .carousel-item img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .carousel-indicators {
+    bottom: 5%; /* más cerca del texto */
+    display: none;
+  }
+
+  
+}
+
+
+
+
+
+
+
+/* Estilos del Modal de ver producto -------------------------------------------------------------------------------------------*/
+.modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed; /* Se mantiene fijo en la ventana */
+    z-index: 1; /* Se asegura de que esté por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Habilita el scroll si el contenido es muy largo */
+    background-color: rgba(0,0,0,0.4); /* Fondo oscuro con opacidad */
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Ajusta el margen para controlar la posición vertical */
+    padding: 20px;
+    border: 1px solid #888;
+    /* Ancho deseado para el modal */
+    width: 90%; /* Ejemplo: 90% del ancho de la ventana */
+    max-width: 700px; /* Ejemplo: Ancho máximo de 700 píxeles */
+    border-radius: 5px;
+    position: relative;
+}
+
+.modal-imagen {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor de detalles */
+    max-height: 300px; /* Altura máxima deseada para la imagen */
+    object-fit: contain; /* Ajusta la imagen dentro del contenedor manteniendo su relación de aspecto */
+    margin-bottom: 15px; /* Espacio debajo de la imagen */
+    border-radius: 5px; /* Opcional: bordes redondeados para la imagen */
+}
+
+.cerrar-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cerrar-modal:hover,
+.cerrar-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-titulo {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#modal-detalles {
+    margin-bottom: 20px;
+}
+
+#modal-boton-whatsapp {
+    background-color: #25D366; /* Color de WhatsApp */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#modal-boton-whatsapp:hover {
+    background-color: #128C7E;
+}
+
+
+
+/* .ofertas----------------------------------------------------- ... */
+.ofertas-destacadas h2,
+.marcas h2,
+.preguntas-frecuentes h2,
+.pagina-categoria h2 {
+    border-bottom: 0.7px solid #8a8a8a;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+.productos-grid {
+    display: grid;
+    /* Permite 2 o 3 columnas en escritorio y se reduce en móvil */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajustado para un mejor comportamiento */
+    gap: 20px;
+    padding: 0 10px;
+}
+
+.producto {
+    
+    background: rgba(247, 247, 247, 0.452);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(248, 248, 248, 0.979);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  
+    
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    justify-content: space-between; /* Empuja el contenido de arriba hacia abajo */
+    align-items: center; /* Centra horizontalmente los elementos */
+
+    /* ¡CLAVE AQUÍ! Altura mínima para la tarjeta */
+    min-height: 380px; /* Ajusta esta altura: Debe ser lo suficientemente alta para el producto con más contenido */
+    /* Para determinar esta altura, puedes:
+       1. Ver el producto con más líneas de texto/elementos.
+       2. Sumar la altura de la imagen, los márgenes, el padding del producto, y la altura de las <div> de texto.
+       3. Usar las herramientas de desarrollador para medir la altura del producto más alto y usar ese valor. */
+}
+
+.producto img {
+    max-width: 100%;
+    height: 200px; /* Alto fijo deseado para la imagen */
+    object-fit: contain;
+    margin-bottom: 10px;
+    width: 100%; /* Asegura que la imagen intente ocupar el 100% del ancho de su padre */
+}
+
+/* Es muy importante usar el selector HTML correcto para el nombre del producto */
+.producto h4 { /* Según tu HTML es <h4>, NO p2 */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    text-align: center;
+    word-break: break-word; /* Para nombres largos */
+    flex-grow: 1; /* ¡Este es crucial! Permite que el h4 se expanda para llenar el espacio disponible */
+    display: flex; /* Convierte h4 en un contenedor flex para centrar su texto */
+    align-items: center; /* Centra el texto verticalmente si ocupa pocas líneas */
+    justify-content: center; /* Centra el texto horizontalmente */
+}
+
+.producto .precio {
+    font-weight: bold;
+    color: rgb(27, 27, 27);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.producto p { /* Para el precio anterior */
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.producto a {
+    display: inline-block;
+    background-color: #471049;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    /* Asegúrate de que el botón no se estire horizontalmente */
+    align-self: center; /* Centra el botón si es un elemento flex */
+     box-shadow: 0 4px 30px rgba(102, 0, 94, 0.438);
+}
+
+.producto a:hover {
+    background-color: #ad25fc;
+   
+}
+
+/* Responsive para móvil */
+@media (max-width: 768px) {
+    .productos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+        padding: 0 5px;
+    }
+
+    .producto {
+        padding: 10px;
+        min-height: 320px; /* Altura mínima ajustada para móvil */
+    }
+
+    .producto img {
+        height: 150px;
+    }
+
+    .producto h4 {
+        font-size: 1em;
+    }
+
+    .producto .precio {
+        font-size: 1.1em;
+    }
+
+    .producto p {
+        font-size: 0.8em;
+    }
+
+    .producto a {
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .productos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 10px;
+    }
+
+    .producto {
+        min-height: 280px; /* Altura mínima para pantallas muy pequeñas */
+    }
+
+    .producto img {
+        height: 120px;
+    }
+}
+/*---------------------------------------------------------------------------------------------------------*/
+/* Estilos Generales para el Banner (Escritorio y Base) */
+.banner-dinamico {
+    
+    background-image: url('../assets/56.jpg');
+    color: #f4f4f4;
+    padding: 10px 200px;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    overflow: hidden;
+    height: 200px; /* Altura fija para escritorio */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-inner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+    max-width: 1000px; /* Ajusta este valor si necesitas más o menos "padding" visual */
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.carousel-container {
+    
+    padding: 15px 25px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el texto */
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0; /* Necesario para que el texto largo no desborde */
+
+    /* ¡Ajustes clave para evitar el movimiento en escritorio! */
+    /* Aseguramos una altura mínima y si quieres una máxima también */
+    min-height: 50px; /* Ajusta esto basado en la altura que necesite tu texto más corto */
+    /* max-height: 80px; /* Opcional: si quieres limitar la altura para el texto más largo */
+}
+
+.carousel-text {
+    display: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    white-space: nowrap; /* Mantiene el texto en una sola línea en escritorio */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
+    overflow: hidden; /* Oculta el texto que se desborde si 'white-space: nowrap' */
+    width: 100%; /* Asegura que el texto ocupe el ancho disponible y active ellipsis */
+}
+
+.carousel-text.active {
+    display: block;
+}
+
+.img-container {
+    flex-shrink: 0;
+    flex-grow: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-container img {
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+
+@media (max-width: 1070px) {
+    .banner-dinamico {
+        height: auto;
+        padding: 15px 100px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .banner-inner-content {
+        flex-direction: column;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .carousel-container {
+        padding: 10px 15px;
+        margin-bottom: 10px;
+        width: 100%; /* Ocupa todo el ancho */
+
+        /* ¡Ajustes clave para evitar el movimiento en móvil! */
+        /* Definimos una altura fija o un rango de altura */
+        min-height: 70px; /* Establece una altura mínima que acomode el texto más largo en móviles */
+        max-height: 100px; /* Si necesitas limitar aún más la altura, ajústalo */
+        /* Si quieres una altura fija exacta, puedes usar: height: 70px; */
+
+        /* Aseguramos que el contenido se centre verticalmente si la altura es fija */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-text {
+        font-size: 1em;
+        white-space: normal; /* Permite que el texto se ajuste a varias líneas */
+        word-break: break-word; /* Rompe palabras largas */
+        /* Eliminamos 'width: 100%; overflow: hidden; text-overflow: ellipsis;' de aquí,
+           ya que queremos que el texto fluya normalmente en móviles */
+        text-align: center; /* Centra el texto multilínea */
+    }
+
+    .img-container {
+        height: auto;
+        max-width: 80%;
+        margin-top: 10px;
+    }
+
+    .img-container img {
+        max-height: 120px;
+        width: auto;
+    }
+}
+
+/* Opcional: Para pantallas aún más pequeñas */
+@media (max-width: 480px) {
+    .banner-dinamico {
+        height: auto;
+        padding: 15px 20px;
+    }
+    .banner-inner-content {
+        padding: 0 5px;
+    }
+
+    .carousel-text {
+        font-size: 0.9em;
+    }
+
+    .img-container {
+        max-width: 90%;
+    }
+
+    .img-container img {
+        max-height: 100px;
+    }
+}
+
+
+
+.quienes-somos-grid-container {
+    display: grid; /* Activa CSS Grid para el contenedor */
+    grid-template-columns: 1fr 500px; /* Define dos columnas: una flexible para el texto y una de ancho fijo para la imagen */
+    gap: 40px; /* Espacio entre el texto y la imagen */
+    align-items: center; /* Alinea verticalmente los elementos al centro */
+   
+    padding: 40px; /* Opcional: añade un poco de espacio alrededor del contenido */
+    
+    border-radius: 5px; /* Opcional: bordes redondeados */
+      background: rgba(247, 247, 247, 0.452);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(248, 248, 248, 0.979);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.quienes-somos-imagen {
+    /* La imagen se ubica automáticamente en la segunda columna */
+    width: 100%; /* Ocupa todo el ancho de su celda */
+    height: auto; /* Mantiene la proporción */
+    border-radius: 5px; /* Opcional: bordes redondeados */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Opcional: una sombra suave */
+}
+
+.quienes-somos-imagen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+}
+
+
+@media (max-width: 768px) {
+    .quienes-somos-grid-container {
+        grid-template-columns: 1fr; /* Una sola columna */
+        text-align: center; /* Centra el texto cuando está apilado */
+        
+    }
+
+    .quienes-somos-imagen {
+        width: 100%; /* La imagen ocupa más ancho en pantallas pequeñas */
+        max-width: 100%;
+        margin-bottom: 20px; /* Espacio debajo de la imagen cuando está apilada */
+        
+    }
+}
+
+
+
+
+/*------------------------------------------------------------------------------------*/
+.marcas{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.marcas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    
+}
+
+.marca img {
+    max-width: 80px;
+    height: auto;
+    opacity: 0.7;
+}
+
+.pregunta {
+    margin-bottom: 15px;
+    padding: 10px;
+      background: rgba(247, 247, 247, 0.452);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(248, 248, 248, 0.979);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #007491;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 20px;
+}
+
+.redes-sociales a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.redes-sociales img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+/* Estilos para diseño responsive (ejemplo básico) */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .productos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}

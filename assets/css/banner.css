@@ -1,0 +1,13 @@
+.miCarrusel {
+  width: 85%;
+  height: 350px; /* Ajusta según tu diseño */
+  border-radius: 15px; /* Si quieres bordes redondeados */
+  margin-top: 130px;
+  margin-bottom: 0px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantiene la proporción sin deformar */
+}
