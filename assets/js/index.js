@@ -6,46 +6,45 @@ const divContainerCategorias = document.querySelector('#divContainerCategorias')
 const carrito = recuperarCarrito();
 
 // --- FUNCIONES DE LÓGICA ---
-
-function retornarSlideCategoria(cate, icono) { // <--- Asegúrate de incluir 'icono' aquí
+const imagenesCategorias = {
+    "laptops": "assets/images/celu.png", // Usa los nombres que realmente tienes en tu carpeta
+    "smartphones": "assets/images/celu.png",
+    "monitores": "assets/images/monitor.png",
+    // Agrega todas las que necesites
+};
+function retornarSlideCategoria(cate, imgUrl) {
     const slide = document.createElement('div');
     slide.className = 'swiper-slide';
     slide.id = cate.toLowerCase();
     slide.innerHTML = `
-        <div class="card-icon-image">${icono}</div>
+        <img src="${imgUrl}" alt="${cate}" class="category-img">
         <div class="category-name">${cate.toUpperCase()}</div>
     `;
     return slide;
 }
+
 function cargarCategorias(listaCategorias) { 
     divContainerCategorias.innerHTML = ""; 
 
-   for (let categoria of listaCategorias) {
-        let icono = "category"; // Valor por defecto
-        
-        if (categoria !== 'todos los productos') {
-            const productoEjemplo = window.arrayProductos.find(p => p.categoria.toLowerCase() === categoria.toLowerCase());
-            if (productoEjemplo) {
-                icono = productoEjemplo.imagen; 
-            }
-        }
+    for (let categoria of listaCategorias) {
+        // Usamos directamente tu diccionario de imágenes
+        const imgUrl = imagenesCategorias[categoria.toLowerCase()] || "assets/images/default.png";
 
-        // Aquí le pasas la variable 'icono' que calculamos arriba
-        divContainerCategorias.append(retornarSlideCategoria(categoria, icono));
+        // Pasamos solo 'imgUrl' a la función, ya que 'icono' ya no es necesario
+        divContainerCategorias.append(retornarSlideCategoria(categoria, imgUrl));
     }
 
+    // Inicialización del Swiper
     new Swiper('.swiper-categorias', {
         effect: 'coverflow',
         grabCursor: true,
         centeredSlides: true,
         slidesPerView: 3, 
         loop: true,
-        // --- AQUÍ PONES LA PAGINACIÓN ---
         pagination: {
-            el: '.categorias-pagination', // Debe ser igual a la clase que pusiste en el HTML
+            el: '.categorias-pagination',
             clickable: true,
         },
-        // --------------------------------
         coverflowEffect: {
             rotate: 30,
             stretch: 0,
@@ -59,15 +58,19 @@ function cargarCategorias(listaCategorias) {
                 if (!slide) return;
                 
                 const cate = slide.id;
+                
+                // Filtramos productos
                 if (cate === 'todos los productos') {
                     cargarProductos(window.arrayProductos);
                 } else {
                     const filtrados = window.arrayProductos.filter(p => p.categoria.toLowerCase() === cate);
                     cargarProductos(filtrados);
                 }
+
+                // Scroll suave
                 document.querySelector('.products-container').scrollIntoView({ 
-            behavior: 'smooth' 
-        });
+                    behavior: 'smooth' 
+                });
             }
         }
     });

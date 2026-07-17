@@ -14,23 +14,32 @@
 .swiper-categorias .swiper-slide {
     color: white;
     border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+   
+    background: var(--accent-dark);
+    padding: 10px;         /* Espacio interno para que no toque los bordes */
+    box-sizing: border-box;
+	/* Espacio para que la imagen no toque los bordes */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    cursor: pointer;
-    width: 220px !important; 
-    height: 120px;
-    background: var(--accent-dark);
-    padding: 10px;         /* Espacio interno para que no toque los bordes */
-    box-sizing: border-box;
+    text-align: center;
+	width: 220px !important;
+    height: 160px !important; /* Aumentamos un poco la altura para que quepa la imagen más grande */
+    padding: 20px !important;
 }
 /* Mejora el texto y el icono */
-.category-name {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    font-weight: bold;
+.swiper-categorias .category-name {
+       /* Un poco más pequeño para que quepa bien */
+    line-height: 1.1;
+    white-space: nowrap;   /* Evita que el texto salte de línea */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Si es muy largo, pone "..." */
+    max-width: 90%;
+	font-size: 0.9rem; /* Un poquito más grande */
+    text-transform: uppercase;
 }
 
 .swiper-categorias .card-icon-image {
@@ -50,3 +59,10 @@
     max-height: 100%;
     object-fit: contain;   /* Mantiene la proporción sin estirarse */
 }
+
+.swiper-categorias .category-img {
+    width: 80px;           /* Aumentamos de 50px a 80px */
+    height: 80px;          /* Aumentamos de 50px a 80px */
+    object-fit: contain;   
+    margin-bottom: 15px;   /* Un poco más de aire */
+} 
