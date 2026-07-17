@@ -1,30 +1,87 @@
-// DECLARAR VARIABLES, CONSTANTES Y ENLACES AL DOM HTML
-const btnCarrito = document.querySelector('div.checkout-header')
-const inputSearch = document.querySelector('input#inputSearch')
-const divContenedor = document.querySelector('div.products-container')
-const divContainerCategorias = document.querySelector('div.container-categories')
-const carrito = recuperarCarrito()
+// DECLARAR VARIABLES (SIN DECLARAR arrayProductos DE NUEVO)
+const btnCarrito = document.querySelector('div.checkout-header');
+const inputSearch = document.querySelector('input#inputSearch');
+const divContenedor = document.querySelector('div.products-container');
+const divContainerCategorias = document.querySelector('#divContainerCategorias');
+const carrito = recuperarCarrito();
 
+// --- FUNCIONES DE LÓGICA ---
 
-// FUNCIONES DE LÓGICA 
+function retornarSlideCategoria(cate, icono) { // <--- Asegúrate de incluir 'icono' aquí
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.id = cate.toLowerCase();
+    slide.innerHTML = `
+        <div class="card-icon-image">${icono}</div>
+        <div class="category-name">${cate.toUpperCase()}</div>
+    `;
+    return slide;
+}
+function cargarCategorias(listaCategorias) { 
+    divContainerCategorias.innerHTML = ""; 
 
-function retornarSpanCategoria(cate) {
-    // return `<span class="category-tag">${cate}</span>`
+   for (let categoria of listaCategorias) {
+        let icono = "category"; // Valor por defecto
+        
+        if (categoria !== 'todos los productos') {
+            const productoEjemplo = window.arrayProductos.find(p => p.categoria.toLowerCase() === categoria.toLowerCase());
+            if (productoEjemplo) {
+                icono = productoEjemplo.imagen; 
+            }
+        }
 
-    const spanCategoria = document.createElement('span')
-    spanCategoria.className = 'category-tag'
-    spanCategoria.id = cate.toLowerCase()
-    spanCategoria.textContent = cate.toUpperCase()
+        // Aquí le pasas la variable 'icono' que calculamos arriba
+        divContainerCategorias.append(retornarSlideCategoria(categoria, icono));
+    }
 
-    return spanCategoria
+    new Swiper('.swiper-categorias', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 3, 
+        loop: true,
+        // --- AQUÍ PONES LA PAGINACIÓN ---
+        pagination: {
+            el: '.categorias-pagination', // Debe ser igual a la clase que pusiste en el HTML
+            clickable: true,
+        },
+        // --------------------------------
+        coverflowEffect: {
+            rotate: 30,
+            stretch: 0,
+            depth: 150,
+            modifier: 1,
+            slideShadows: true,
+        },
+        on: {
+            click: function (swiper) {
+                const slide = swiper.clickedSlide;
+                if (!slide) return;
+                
+                const cate = slide.id;
+                if (cate === 'todos los productos') {
+                    cargarProductos(window.arrayProductos);
+                } else {
+                    const filtrados = window.arrayProductos.filter(p => p.categoria.toLowerCase() === cate);
+                    cargarProductos(filtrados);
+                }
+                document.querySelector('.products-container').scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+            }
+        }
+    });
 }
 
-function cargarCategorias() {
-    if (arrayCategorias.length > 0) {
-        for (let categoria of arrayCategorias) {
-            divContainerCategorias.append(retornarSpanCategoria(categoria))
-        }
-        activarClickEnCategorias()
+function cargarProductos(array) {
+    divContenedor.innerHTML = "";
+    if (array.length > 0) {
+        array.forEach(producto => {
+            divContenedor.innerHTML += crearCardProducto(producto);
+        });
+        activarClickBotonesComprar();
+    } else {
+        divContenedor.innerHTML = crearCardHTMLError();
     }
 }
 
@@ -33,7 +90,7 @@ function crearCardHTMLError() {
                 <div class="card-icon-image">🔌</div>
                 <div class="card-error-title"><h2>No se encuentran productos</h2></div>
                 <div class="card-error-detail">Intenta nuevamente en unos instantes.</div>
-            </div>`
+            </div>`;
 }
 
 function crearCardProducto(producto) {
@@ -41,110 +98,49 @@ function crearCardProducto(producto) {
                 <div class="card-icon-image">${producto.imagen}</div>
                 <div class="card-product-title">${producto.nombre}</div>
                 <div class="card-product-price">${producto.precio}</div>
-                <button class="card-button-buy" id="${producto.id}">
-                    Comprar
-                </button>
-            </div>`
-}
-
-function cargarProductos(array) {
-    divContenedor.innerHTML = ""
-
-    if (array.length > 0) {
-        for (let producto of array) {
-            divContenedor.innerHTML += crearCardProducto(producto)
-        }
-        activarClickBotonesComprar()
-    } else {
-        divContenedor.innerHTML = crearCardHTMLError()
-    }
-}
-
-function obtenerProductos() {
-    fetch('assets/js/productos.json')
-    .then((response)=> response.json())
-    .then((data)=> arrayProductos.push(...data))
-    .then(()=> cargarProductos(arrayProductos))
-    .catch((error)=> console.error(error) )
-}
-
-function activarClickEnCategorias() {
-    const spanCategorias = document.querySelectorAll('span.category-tag')
-
-    if (spanCategorias.length > 0) {
-        for (let categoria of spanCategorias) {
-            categoria.addEventListener('click', ()=> {
-                let cate = categoria.textContent.toLowerCase()
-
-                if (cate === 'todos los productos') {
-                    cargarProductos(arrayProductos)
-                    return 
-                }
-
-                const productosFiltrados = arrayProductos.filter((producto)=> producto.categoria === cate )
-
-                if (productosFiltrados.length > 0) {
-                    cargarProductos(productosFiltrados)
-                } else {
-                    alert('No se encontraron productos en esta categoria.')
-                }
-            })
-        }
-    }
+                <button class="card-button-buy" id="${producto.id}">Comprar</button>
+            </div>`;
 }
 
 function activarClickBotonesComprar() {
-    const botonesComprar = document.querySelectorAll('button.card-button-buy')
-
-    if (botonesComprar.length > 0) {
-        for (let botonComprar of botonesComprar) {
-            botonComprar.addEventListener('click', ()=> {
-                const productoSeleccionado = arrayProductos.find((producto)=> producto.id === botonComprar.id )
-                carrito.push(productoSeleccionado)
-                guardarCarrito()
-            })
-        }
-    }
+    document.querySelectorAll('button.card-button-buy').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const prod = window.arrayProductos.find(p => p.id === btn.id);
+            carrito.push(prod);
+            guardarCarrito();
+        });
+    });
 }
 
-function guardarCarrito() {
-    localStorage.setItem('carrito', JSON.stringify(carrito) )
-}
+function guardarCarrito() { localStorage.setItem('carrito', JSON.stringify(carrito)); }
+function recuperarCarrito() { return JSON.parse(localStorage.getItem('carrito')) || []; }
 
-function recuperarCarrito() {
-    const carritoRecuperado = JSON.parse( localStorage.getItem('carrito') )
+// --- EVENTOS E INICIALIZACIÓN ---
 
-    if (carritoRecuperado === null ) {
-        return []
-    } else {
-        return carritoRecuperado
-    }
-}
-
-// FUNCIÓN PRINCIPAL
-cargarCategorias()
-obtenerProductos()
-
-
-// EVENTOS (aquellos elementos que tendrán un evento definido)
-// Usamos el evento 'input' para que se dispare con cada letra que escribes
 inputSearch.addEventListener('input', () => {
-    let textoAbuscar = inputSearch.value.toLowerCase();
-
-    // Si el input está vacío, recargamos todos los productos originales
-    if (textoAbuscar === '') {
-        cargarProductos(arrayProductos); // Asumiendo que 'arrayProductos' es tu lista completa original
-        return;
-    }
-
-   // Usamos .startsWith() en lugar de .includes()
-    const productosFiltrados = arrayProductos.filter((producto) => 
-        producto.nombre.toLowerCase().startsWith(textoAbuscar)
-    );
-
-    // Mostramos los resultados
-    cargarProductos(productosFiltrados);
+    let busqueda = inputSearch.value.toLowerCase();
+    const filtrados = window.arrayProductos.filter(p => p.nombre.toLowerCase().startsWith(busqueda));
+    cargarProductos(busqueda === '' ? window.arrayProductos : filtrados);
 });
 
-btnCarrito.addEventListener('click', ()=> location.href = 'checkout.html' )
+btnCarrito.addEventListener('click', () => location.href = 'checkout.html');
 
+document.addEventListener('DOMContentLoaded', () => {
+    obtenerProductos(); 
+});
+
+function obtenerProductos() {
+    fetch('assets/js/productos.json')
+    .then(res => res.json())
+    .then(data => {
+        // Guardamos en el objeto global window para evitar problemas de alcance
+        window.arrayProductos = data; 
+        
+        // Calculamos las categorías desde los datos obtenidos
+        const categoriasUnicas = ['todos los productos', ...new Set(data.map(p => p.categoria))];
+        
+        cargarProductos(window.arrayProductos);
+        cargarCategorias(categoriasUnicas); 
+    })
+    .catch(err => console.error(err));
+}

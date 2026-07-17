@@ -1,49 +1,52 @@
-/* Products grid and cards */
 
-.container-categories {
-	user-select: none;
-	cursor: pointer;
-	display: flex;
-	flex-wrap: wrap; /* continuar en la siguiente línea cuando no haya espacio */
-	justify-content: center; /* centrar las cards dentro del contenedor */
-	align-items: flex-start;
-	gap: 1.2rem;
-	width: 80%; /* ocupar ancho máximo disponible */
-	padding: .1rem;
-	margin: 0 auto;
-	margin-bottom: 60px;
-	min-height: auto;
+
+/* Contenedor principal con perspectiva */
+.swiper-categorias {
+    width: 100%;
+    height: 200px; /* Importante para que no se vea lo que sobra */
+	margin-top: 20px;   /* Empuja el carrusel hacia abajo */
+    margin-bottom: 50px; /* Separa de los productos */
+    min-height: 200px;  /* Altura mínima para que el 3D no se aplaste */
+    padding: 20px 0;    /* Espacio interno para que no corte las tarjetas */
+    z-index: 10;
 }
 
-.category-tag {
-	color: var(--surface);
-	font-weight: 700;
-	background-color: var(--accent-dark);
-	padding: 5px 20px;
-	font-size: 1.2rem;
-	border-radius: 8px;
-	text-transform: uppercase;
-	gap: 20px;
+.swiper-categorias .swiper-slide {
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    width: 220px !important; 
+    height: 120px;
+    background: var(--accent-dark);
+    padding: 10px;         /* Espacio interno para que no toque los bordes */
+    box-sizing: border-box;
+}
+/* Mejora el texto y el icono */
+.category-name {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
 }
 
-.category-tag:hover {
-	background-color: var(--accent);
-	transform: scale(1.05);
+.swiper-categorias .card-icon-image {
+    font-size: 2rem;       /* Reduce el tamaño del icono (ajusta según prefieras: 1.5rem, 2rem) */
+    width: 50px;           /* Tamaño fijo para el contenedor del icono */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;      /* Evita que el contenido se desborde */
+    margin-bottom: 5px;    /* Espacio entre icono y texto */
 }
 
-.category-tag:active {
-	transform: scale(.98);
-}
-
-@media (max-width: 640px) {
-	
-    .category-tag{
-        font-weight: 300;
-	background-color: var(--accent-dark);
-	padding: 3px 10px;
-	font-size: 0.8rem;
-	border-radius: 4px;
-	text-transform: uppercase;
-	gap: 10px;
-    }
+/* Asegura que cualquier imagen o icono dentro se adapte */
+.swiper-categorias .card-icon-image img {
+    max-width: 100%;       /* Nunca será más grande que su contenedor de 50px */
+    max-height: 100%;
+    object-fit: contain;   /* Mantiene la proporción sin estirarse */
 }

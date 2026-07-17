@@ -1,15 +1,13 @@
 .miCarrusel {
-  width: 85%;
-  height: 350px; /* Ajusta según tu diseño */
-  border-radius: 15px; /* Si quieres bordes redondeados */
-  margin-top: 120px;
-  margin-bottom: 0px;
-    /* Centrado automático */
-  margin-left: auto;
-  margin-right: auto;
+    width: 85%;
+    height: 400px;
+    margin: 150px auto 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    
 }
-
-.swiper-slide img {
+.miCarrusel.swiper-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Mantiene la proporción sin deformar */
@@ -20,7 +18,8 @@
   .miCarrusel {
     width: 95%; /* Ocupa casi todo el ancho disponible */
     height: 150px; /* Reducimos la altura para que no ocupe toda la pantalla */
-    margin-top: 180px;
+    
+    margin-top: 10px;
     
   }
 
@@ -34,4 +33,20 @@
   .swiper-pagination {
     bottom: 5px !important;
   }
+}
+
+.swiper-categorias {
+    width: 100%;
+    height: 250px;
+    padding: 20px 0;
+    margin-top: 20px; /* Separación clara después del banner */
+    position: relative;
+    z-index: 2;
+}
+.miCarrusel .swiper-slide img {
+    width: 100%;
+    height: 100%; /* Ocupa el 100% de la altura del contenedor (400px) */
+    object-fit: cover; /* Esto es lo que hace que la imagen se expanda y llene todo el espacio sin deformarse */
+    object-position: center; /* Centra la imagen para que se vea la parte principal */
+    display: block;
 }
