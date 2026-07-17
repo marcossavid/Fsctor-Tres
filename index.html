@@ -8,8 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="assets/images/gadgets-icon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!--CSS-->
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/banner.css">
+    <link rel="stylesheet" href="assets/css/categorias.css">
+    <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
       <!--fuente-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,15 +29,24 @@
     <header>
         <div class="navigation-header">
             <h1 class="audiowide-regular">FACTOR3</h1>
-            <p>Tu E-Commerce de productos electrónicos favorito.</p>
+        </div>
+         <div class="search-bar">
+            <search>
+                <input type="search" 
+                       id="inputSearch" 
+                       placeholder="Ingresa el producto a buscar."
+                       autocomplete="off"
+                >
+            </search>
         </div>
         <div class="checkout-header" title="Ir al carrito">
             <span class="material-symbols-outlined search-icon">
                 shopping_cart_checkout
             </span>
         </div>
+
     </header>
- <!-- Estructura del Carrusel -->
+ <!-- Estructura del BANNER Carrusel -->
 <div class="swiper miCarrusel">
   <div class="swiper-wrapper">
     <div class="swiper-slide"><img src="assets/images/banner1.jpg" alt="Diseño 1"></div>
@@ -48,15 +60,7 @@
 </div>
 
     <main>
-        <div class="search-bar">
-            <search>
-                <input type="search" 
-                       id="inputSearch" 
-                       placeholder="Ingresa el producto a buscar."
-                       autocomplete="off"
-                >
-            </search>
-        </div>
+       
 
         <div class="container-categories">
             

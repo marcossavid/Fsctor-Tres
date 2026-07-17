@@ -1,0 +1,49 @@
+/* Products grid and cards */
+
+.container-categories {
+	user-select: none;
+	cursor: pointer;
+	display: flex;
+	flex-wrap: wrap; /* continuar en la siguiente línea cuando no haya espacio */
+	justify-content: center; /* centrar las cards dentro del contenedor */
+	align-items: flex-start;
+	gap: 1.2rem;
+	width: 80%; /* ocupar ancho máximo disponible */
+	padding: .1rem;
+	margin: 0 auto;
+	margin-bottom: 60px;
+	min-height: auto;
+}
+
+.category-tag {
+	color: var(--surface);
+	font-weight: 700;
+	background-color: var(--accent-dark);
+	padding: 5px 20px;
+	font-size: 1.2rem;
+	border-radius: 8px;
+	text-transform: uppercase;
+	gap: 20px;
+}
+
+.category-tag:hover {
+	background-color: var(--accent);
+	transform: scale(1.05);
+}
+
+.category-tag:active {
+	transform: scale(.98);
+}
+
+@media (max-width: 640px) {
+	
+    .category-tag{
+        font-weight: 300;
+	background-color: var(--accent-dark);
+	padding: 3px 10px;
+	font-size: 0.8rem;
+	border-radius: 4px;
+	text-transform: uppercase;
+	gap: 10px;
+    }
+}

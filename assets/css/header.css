@@ -1,0 +1,106 @@
+/* --- HEADER COMPLETO --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    display: flex;
+    flex-wrap: wrap; /* Permite el salto de fila en móvil */
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    background: var(--surface);
+    border-bottom: 1px solid rgba(16,24,40,0.04);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+}
+
+/* Logo */
+.navigation-header {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+}
+.navigation-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.2px;
+}
+
+/* Icono Carrito */
+.checkout-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.checkout-header .search-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 70%, black 10%));
+    color: var(--surface);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(3,102,118,0.14);
+    font-size: 2rem;
+    transition: all 160ms ease;
+}
+
+/* Search Bar Completa */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; /* Ocupa el espacio central en escritorio */
+    padding: 0 20px;
+}
+
+.search-bar search {
+    display: inline-flex;
+    align-items: center;
+    background: color-mix(in srgb, var(--surface) 88%, var(--bg));
+    padding: 6px 16px;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+    width: 100%;
+    max-width: 500px; /* Recupera tu límite de tamaño */
+}
+
+#inputSearch {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 8px 12px;
+    font-size: 1rem;
+    color: var(--text);
+    outline: none;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 640px) {
+    header {
+        height: auto; /* Permite crecer para dos filas */
+        padding: 10px 0.75rem;
+    }
+    
+    .search-bar {
+        order: 3; /* Fuerza al buscador a la segunda fila */
+        flex: 1 0 100%; /* Ocupa el ancho completo */
+        padding: 10px 0;
+        margin-top: 0;
+    }
+	#inputSearch {
+    border: none;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+   
+}
+    
+    .search-bar search {
+        max-width: 100%; /* Asegura que llene la pantalla */
+    }
+}
