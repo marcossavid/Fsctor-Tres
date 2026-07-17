@@ -4,7 +4,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: 120px;
+    height: 100px;
     display: flex;
     flex-wrap: wrap; /* Permite el salto de fila en móvil */
     align-items: center;

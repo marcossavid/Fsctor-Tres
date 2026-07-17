@@ -31,8 +31,8 @@ function cargarCategorias() {
 function crearCardHTMLError() {
     return `<div class="card error">
                 <div class="card-icon-image">🔌</div>
-                <div class="card-error-title"><h2>Se ha producido un error</h2></div>
-                <div class="card-error-detail">No se pudo acceder al listado de productos. Intenta nuevamente en unos instantes.</div>
+                <div class="card-error-title"><h2>No se encuentran productos</h2></div>
+                <div class="card-error-detail">Intenta nuevamente en unos instantes.</div>
             </div>`
 }
 
@@ -127,18 +127,24 @@ obtenerProductos()
 
 
 // EVENTOS (aquellos elementos que tendrán un evento definido)
-inputSearch.addEventListener('search', ()=> {
-    let textoAbuscar = inputSearch.value.toLowerCase()
-    if (textoAbuscar !== '') {
-        const productosFiltrados = arrayProductos.filter((producto)=> producto.nombre.toLowerCase().includes(textoAbuscar) )
+// Usamos el evento 'input' para que se dispare con cada letra que escribes
+inputSearch.addEventListener('input', () => {
+    let textoAbuscar = inputSearch.value.toLowerCase();
 
-        if (productosFiltrados.length > 0) {
-            cargarProductos(productosFiltrados)
-        } else {
-            alert('No se encontraron productos con el texto: ' + textoAbuscar)
-        }
+    // Si el input está vacío, recargamos todos los productos originales
+    if (textoAbuscar === '') {
+        cargarProductos(arrayProductos); // Asumiendo que 'arrayProductos' es tu lista completa original
+        return;
     }
-})
+
+   // Usamos .startsWith() en lugar de .includes()
+    const productosFiltrados = arrayProductos.filter((producto) => 
+        producto.nombre.toLowerCase().startsWith(textoAbuscar)
+    );
+
+    // Mostramos los resultados
+    cargarProductos(productosFiltrados);
+});
 
 btnCarrito.addEventListener('click', ()=> location.href = 'checkout.html' )
 
