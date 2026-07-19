@@ -19,8 +19,8 @@
     width: 95%; /* Ocupa casi todo el ancho disponible */
     height: 150px; /* Reducimos la altura para que no ocupe toda la pantalla */
     
-    margin-top: 10px;
-    
+    margin-top: 170px;
+    margin-bottom: -40px;
   }
 
   /* Ocultar botones de navegación si son muy grandes, o hacerlos más pequeños */
