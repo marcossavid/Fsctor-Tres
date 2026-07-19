@@ -5,11 +5,25 @@ const divContenedor = document.querySelector('div.products-container');
 const divContainerCategorias = document.querySelector('#divContainerCategorias');
 const carrito = recuperarCarrito();
 
-// --- FUNCIONES DE LÓGICA ---
+// --- IMAGENES DE LAS CATEGORIAS ---
 const imagenesCategorias = {
-    "laptops": "assets/images/celu.png", // Usa los nombres que realmente tienes en tu carpeta
+    "laptops": "assets/images/77.png", // Usa los nombres que realmente tienes en tu carpeta
     "smartphones": "assets/images/celu.png",
     "monitores": "assets/images/monitor.png",
+    "televisión": "assets/images/5.png",
+     "componentes": "assets/images/7.png",
+     "redes": "assets/images/6.png",
+     "accesorios": "assets/images/4.png",
+     "gaming": "assets/images/3.png",
+     "almacenamiento": "assets/images/1.png",
+    "fotografía": "assets/images/2.png",
+    "audio": "assets/images/8.png",
+     "wearables": "assets/images/22.png",
+     "oficina": "assets/images/9.png",
+     "smart-home": "assets/images/55.png",
+
+
+
     // Agrega todas las que necesites
 };
 function retornarSlideCategoria(cate, imgUrl) {
@@ -22,13 +36,13 @@ function retornarSlideCategoria(cate, imgUrl) {
     `;
     return slide;
 }
-
+//CATEGORIAS DEL INDEX
 function cargarCategorias(listaCategorias) { 
     divContainerCategorias.innerHTML = ""; 
 
     for (let categoria of listaCategorias) {
         // Usamos directamente tu diccionario de imágenes
-        const imgUrl = imagenesCategorias[categoria.toLowerCase()] || "assets/images/default.png";
+        const imgUrl = imagenesCategorias[categoria.toLowerCase()] || "assets/images/33.png";
 
         // Pasamos solo 'imgUrl' a la función, ya que 'icono' ya no es necesario
         divContainerCategorias.append(retornarSlideCategoria(categoria, imgUrl));
@@ -56,7 +70,13 @@ function cargarCategorias(listaCategorias) {
             click: function (swiper) {
                 const slide = swiper.clickedSlide;
                 if (!slide) return;
+                // 1. Quitar la clase 'active-category' de TODOS los slides
+                document.querySelectorAll('.swiper-slide').forEach(s => {
+                    s.classList.remove('active-category');
+                });
                 
+                // 2. Agregar la clase 'active-category' al slide clickeado
+                slide.classList.add('active-category');
                 const cate = slide.id;
                 
                 // Filtramos productos
@@ -75,7 +95,7 @@ function cargarCategorias(listaCategorias) {
         }
     });
 }
-
+//PRODUCTOS EN EL INDEX
 function cargarProductos(array) {
     divContenedor.innerHTML = "";
     if (array.length > 0) {

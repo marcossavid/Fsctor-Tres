@@ -16,8 +16,9 @@
     border-radius: 8px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     cursor: pointer;
-   
-    background: var(--accent-dark);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: rgb(100, 172, 255);
     padding: 10px;         /* Espacio interno para que no toque los bordes */
     box-sizing: border-box;
 	/* Espacio para que la imagen no toque los bordes */
@@ -29,6 +30,12 @@
 	width: 220px !important;
     height: 160px !important; /* Aumentamos un poco la altura para que quepa la imagen más grande */
     padding: 20px !important;
+}
+/* Clase que aplicaremos al hacer clic */
+.swiper-categorias .swiper-slide.active-category {
+    background-color: #003f83 !important; /* El color que quieras para la activa */
+    border-color: #ffffff;               /* Opcional: un borde blanco */
+    transform: scale(2);               /* Un ligero efecto de zoom */
 }
 /* Mejora el texto y el icono */
 .swiper-categorias .category-name {
